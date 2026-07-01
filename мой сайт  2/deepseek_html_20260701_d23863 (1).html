@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шиловский Максим · QA Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #0b1a33;
+            line-height: 1.5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            padding: 48px 56px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 28px 20px;
+                border-radius: 24px;
+            }
+        }
+
+        /* === Header === */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 2px solid #eef2f6;
+        }
+
+        .header-left h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: #0b1a33;
+        }
+
+        .header-left .badge {
+            display: inline-block;
+            margin-top: 8px;
+            background: #eef6ff;
+            color: #1a5cff;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 4px 16px;
+            border-radius: 100px;
+        }
+
+        .header-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 15px;
+            color: #1e2f44;
+        }
+
+        .header-right a {
+            color: #1a5cff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .header-right a:hover {
+            text-decoration: underline;
+        }
+        .header-right .location {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        /* === Info grid === */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px 24px;
+            background: #f8fafc;
+            padding: 20px 24px;
+            border-radius: 20px;
+            margin-bottom: 36px;
+        }
+        .info-grid span {
+            font-size: 14px;
+            color: #475569;
+            font-weight: 500;
+        }
+        .info-grid strong {
+            font-weight: 600;
+            color: #0b1a33;
+        }
+
+        /* === Section === */
+        .section {
+            margin-top: 36px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
+            color: #0b1a33;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: #eef2f6;
+        }
+
+        .section-sub {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 6px;
+            color: #0b1a33;
+        }
+
+        .text-muted {
+            color: #475569;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .exp-item {
+            margin-bottom: 24px;
+        }
+        .exp-item .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .exp-item .exp-title {
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .exp-item .exp-company {
+            font-weight: 600;
+            color: #1a5cff;
+        }
+        .exp-item .exp-date {
+            font-size: 14px;
+            color: #475569;
+            font-weight: 500;
+        }
+        .exp-item ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style: disc;
+            font-size: 15px;
+            color: #1e2f44;
+        }
+        .exp-item ul li {
+            margin-bottom: 4px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin-top: 6px;
+        }
+        .skill-tag {
+            background: #f1f4f9;
+            padding: 4px 14px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e2f44;
+        }
+
+        /* === GALLERY (новый стиль) === */
+        .cert-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .cert-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #eef2f6;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            text-align: center;
+        }
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .cert-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid #eef2f6;
+            background: #fff;
+        }
+
+        .cert-card .cert-label {
+            display: block;
+            padding: 10px 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #0b1a33;
+            line-height: 1.3;
+            background: white;
+        }
+
+        @media (max-width: 480px) {
+            .cert-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+            .cert-card img {
+                height: 120px;
+            }
+        }
+        @media (max-width: 380px) {
+            .cert-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 2px solid #eef2f6;
+            font-size: 14px;
+            color: #475569;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .footer-note a {
+            color: #1a5cff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .header-right {
+                text-align: left;
+                width: 100%;
+            }
+            .header-right .location {
+                justify-content: flex-start;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-left">
+                <h1>Шиловский Максим</h1>
+                <div class="badge">QA Engineer · Manual · API · Web · SQL</div>
+            </div>
+            <div class="header-right">
+                <div><a href="mailto:mackshilovscy@mail.ru">mackshilovscy@mail.ru</a></div>
+                <div><a href="tel:+79207757230">+7 (920) 775-72-30</a></div>
+                <div class="location">
+                    <span>📍 Санкт-Петербург / Москва</span>
+                </div>
+                <div style="font-size:14px; color:#1a5cff; margin-top:2px;">
+                    <a href="https://max.ru/u/f9LHodD0cOlooPnrG3Mc-sS3xrCY0m1XyUR4EVPH7k_dFn6YZIGOxwgbLZw" target="_blank">max.ru</a> · 
+                    <a href="https://t.me/Makcim_Vi" target="_blank">@Makcim_Vi</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFO GRID -->
+        <div class="info-grid">
+            <span><strong>Опыт:</strong> 9 месяцев</span>
+            <span><strong>Занятость:</strong> полная, удалённо, гибрид</span>
+            <span><strong>Готов к переезду:</strong> Москва</span>
+            <span><strong>Английский:</strong> B2 (средне-продвинутый)</span>
+        </div>
+
+        <!-- ОПЫТ РАБОТЫ -->
+        <div class="section">
+            <div class="section-title">Опыт работы</div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-title">Junior QA Engineer</span>
+                    <span class="exp-company">QA Studio</span>
+                    <span class="exp-date">ноябрь 2025 — настоящее время</span>
+                </div>
+                <ul>
+                    <li>Тестирование REST/SOAP API (Postman, скрипты, автотесты, Mock Server).</li>
+                    <li>Проверка передачи данных через Kafka, анализ логов (SSH, Docker).</li>
+                    <li>Работа с PostgreSQL, MongoDB (запросы средней сложности).</li>
+                    <li>Составление тестовой документации: чек-листы, тест-кейсы, баг-репорты.</li>
+                    <li>Автотесты на JavaScript + Cypress (базовый синтаксис).</li>
+                    <li>Регрессионное тестирование, ретестинг, контроль качества.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-title">Стажер QA Engineer</span>
+                    <span class="exp-company">Школа дизайна НИУ ВШЭ</span>
+                    <span class="exp-date">февраль 2026 — март 2026</span>
+                </div>
+                <ul>
+                    <li>Функциональное и регрессионное тестирование веб-версии (кроссбраузерно и кроссплатформенно).</li>
+                    <li>Зона ответственности — раздел «Конкурсы»: регистрация, загрузка проектов, статус заявки.</li>
+                    <li>Составил чек-листы в Miro и тест-кейсы в TMS.</li>
+                    <li>Задокументировал 20 багов в Яндекс.Трекер (5 — высокий приоритет).</li>
+                    <li>Предложил улучшения UI/UX (индикаторы загрузки, функция «Черновик»).</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-title">Стажер QA Engineer</span>
+                    <span class="exp-company">Авто Маршал</span>
+                    <span class="exp-date">январь 2026 — февраль 2026</span>
+                </div>
+                <ul>
+                    <li>Тестирование сайта (кроссбраузерно, кроссплатформенно, API).</li>
+                    <li>Зона ответственности — бронирование автомобиля.</li>
+                    <li>Тестирование при низком сигнале, офлайн-режим, разные разрешения экрана.</li>
+                    <li>Найдено 15 багов, предложено 5 рекомендаций по улучшению продукта.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ОБРАЗОВАНИЕ -->
+        <div class="section">
+            <div class="section-title">Образование</div>
+            <div style="font-weight:600; font-size:16px;">Академия управления и производства, г. Москва</div>
+            <div class="text-muted">Высшее образование, 2026</div>
+        </div>
+
+        <!-- НАВЫКИ -->
+        <div class="section">
+            <div class="section-title">Навыки</div>
+            <div class="skill-tags">
+                <span class="skill-tag">REST API</span>
+                <span class="skill-tag">SOAP / SoapUI</span>
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">Swagger / Redoc</span>
+                <span class="skill-tag">SQL (PostgreSQL)</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">Kibana / Sentry</span>
+                <span class="skill-tag">Grafana</span>
+                <span class="skill-tag">JavaScript + Cypress</span>
+                <span class="skill-tag">Python + Pytest</span>
+                <span class="skill-tag">Charles</span>
+                <span class="skill-tag">App Metrica</span>
+                <span class="skill-tag">CI/CD</span>
+                <span class="skill-tag">Apache Kafka</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Docker</span>
+            </div>
+        </div>
+
+        <!-- СЕРТИФИКАТЫ → ГАЛЕРЕЯ ИЗОБРАЖЕНИЙ -->
+        <div class="section">
+            <div class="section-title">Сертификаты</div>
+            <div class="cert-gallery">
+                <div class="cert-card">
+                    <img src="сертификат тестировщик.JPG" alt="Сертификат QA Studio на русском">
+                    <span class="cert-label">QA Studio — Инженер по тестированию (139 ч)</span>
+                </div>
+                <div class="cert-card">
+                    <img src="сертификат тестировщика на англ.JPG" alt="Сертификат QA Studio на английском">
+                    <span class="cert-label">QA Studio — Basic Course (англ., 139 ч)</span>
+                </div>
+                <div class="cert-card">
+                    <img src="стажировка автомарш.JPG" alt="Сертификат стажировки Авто Маршал">
+                    <span class="cert-label">Стажировка «Авто Маршал» (56 ч)</span>
+                </div>
+                <div class="cert-card">
+                    <img src="стажировка школа дизайна.png" alt="Сертификат стажировки Школа дизайна НИУ ВШЭ">
+                    <span class="cert-label">Стажировка «Школа дизайна НИУ ВШЭ» (72 ч)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ДОПОЛНИТЕЛЬНО -->
+        <div class="section">
+            <div class="section-title">Дополнительно</div>
+            <div style="font-size:15px; color:#1e2f44; background:#f8fafc; padding:16px 20px; border-radius:20px;">
+                Привет, я Макс. QA инженер с опытом тестирования web и backend. 
+                Специализируюсь на ручном тестировании (функциональное, интеграционное, регрессионное, UI/UX), 
+                тестировании API, баз данных, работе с логами и брокерами сообщений (Apache Kafka). 
+                Активно использую AI-инструменты для генерации тестовых данных и анализа требований. 
+                Умею превращать «непонятно с чего начать» в чёткий план действий. 
+                Грамотен, тактичен, стрессоустойчив. Соблюдаю этикет удаленной работы.
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer-note">
+            <span>Шиловский Максим · Резюме обновлено 1 июля 2026</span>
+            <span>
+                <a href="mailto:mackshilovscy@mail.ru">почта</a> · 
+                <a href="https://t.me/Makcim_Vi" target="_blank">Telegram</a> · 
+                <a href="https://max.ru/u/f9LHodD0cOlooPnrG3Mc-sS3xrCY0m1XyUR4EVPH7k_dFn6YZIGOxwgbLZw" target="_blank">max.ru</a>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
